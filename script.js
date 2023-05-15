@@ -13,30 +13,22 @@ function previewTextFile() {
 	};
 }
 function caesarCipher(str, shift) {
-	// Ensure that shift is within the range 0-25
-	shift = shift % 26;
-	// Convert the input string to uppercase and split it into an array of characters
-	const input = str.toUpperCase().split('');
-	// Create an empty array to store the output characters
-	const output = [];
-	// Iterate over each character in the input array
-	input.forEach(char => {
-	  // Check if the character is a letter
-	  if (char.match(/[A-Z]/)) {
-		// Convert the character code to the range 0-25
-		const charCode = char.charCodeAt(0) - 65;
-		// Apply the shift and wrap around if necessary
-		const shiftedCharCode = (charCode + shift + 26) % 26;
-		// Convert the shifted character code back to a letter and add it to the output array
-		const shiftedChar = String.fromCharCode(shiftedCharCode + 65);
-		output.push(shiftedChar);
-	  } else {
-		// If the character is not a letter, add it to the output array without shifting
-		output.push(char);
+	let result = "";
+	for (let i = 0; i < str.length; i++) {
+	  let charCode = str.charCodeAt(i);
+	  let newCharCode;
+	  if (charCode >= 48 && charCode <= 57) { // numeric character
+		newCharCode = ((charCode - 48 + shift) % 10) + 48; // shift the numeric character code
+	  } else if (charCode >= 65 && charCode <= 90) { // uppercase letter
+		newCharCode = ((charCode - 65 + shift) % 26) + 65; // shift the uppercase letter code
+	  } else if (charCode >= 97 && charCode <= 122) { // lowercase letter
+		newCharCode = ((charCode - 97 + shift) % 26) + 97; // shift the lowercase letter code
+	  } else { // other character (such as punctuation or whitespace)
+		newCharCode = charCode; // leave it unchanged
 	  }
-	});
-	// Join the output array into a single string and return it
-	return output.join('');
+	  result += String.fromCharCode(newCharCode);
+	}
+	return result;
 }
 function encryptFile() {
 	const file = fileInput.files[0];
