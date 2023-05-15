@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js" defer></script>
+    <title>CryptoCoder</title>
+</head>
+<body>
+    <section id="main">
+        <div class="side-bar">
+            <div class="upload">
+                <button type="button" class="btn-design">
+                    <i class="fa fa-upload"></i> Upload File
+                    <input type="file" id="file" onchange="previewTextFile()" accept=".txt">
+                </button>
+            </div>
+            <div class="button-groups">
+                <button type="button" id="encryption" onclick="encryptFile()"><i class="fa-solid fa-lock"></i>Encrypt</button>
+                <button type="button" id="decryption" onclick="decryptFile()"><i class="fa-solid fa-lock-open"></i>Decrypt</button>
+                <button type="button" id="download"><i class="fa-solid fa-download"></i>Download</button>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="header"><h2>Preview</h2></div>
+            <div id="file-preview"></div>         
+        </div>
+    </section>
+</body>
+</html>
